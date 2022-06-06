@@ -119,13 +119,7 @@ public class hero : MonoBehaviour
                 jumpForce = 4f;
             }
         }
-        if (Input.GetKey(KeyCode.F4))
-        {
-            bc.size = new Vector2((float)0.3849311, (float)0.3380481);
-            bc.offset = new Vector2((float)-0.07007718, (float)0.3537292);
-            ChangeSprite(bird);
-        }
-        if(timeBtwAttack <= 0)
+        if(timeBtwAttack >= 0)
         {
             if (Input.GetMouseButton(0) && bc.size == new Vector2((float)0.3500786, (float)0.6035978))
             {
@@ -175,6 +169,11 @@ public class hero : MonoBehaviour
     void ChangeSprite(Sprite sprite)
     {
         spriteRenderer.sprite = sprite;
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPos.position, attackRange);
     }
 }
 public enum States
