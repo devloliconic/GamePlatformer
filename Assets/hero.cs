@@ -7,90 +7,79 @@ public class hero : MonoBehaviour
     [SerializeField] private float speed = 3f;
     [SerializeField] private int lives = 5;
     [SerializeField] private float jumpForce = 8f;
-    private float timeBtwAttack;
-    public float startTimeBtwAttack;
 
-    public Transform attackPos;
-    public LayerMask enemy;
-    public float attackRange;
-    public int damage;
-    private bool isGrounded = false;
+
+    private bool moveInput;
+
+
+
+    private bool isGrounded;
+    public Transform feetPos;
+    public float checkRadius;
+    public LayerMask whatIsGround;
 
     private Rigidbody2D rb;
-    private Animator anim;
+    public Animator anim;
     private SpriteRenderer spriteRenderer;
     public BoxCollider2D bc;
     public Sprite dog;
-    public Sprite bird;
-    public Sprite rat;
     public Sprite oldSprite;
 
     private void Start()
     {
         bc = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
-    }
-    private States State
-    {
-        get { return (States)anim.GetInteger("state"); }
-        set { anim.SetInteger("state", (int)value); }
+        rb = GetComponent<Rigidbody2D>();
     }
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
     private void FixedUpdate()
     {
-        CheckGround();
+        moveInput = Input.GetButton("Horizontal");
+        if (moveInput && bc.size == new Vector2((float)0.3500786, (float)0.6035978))
+        {
+            anim.SetBool("isRunning", true);
+            //anim.SetBool("isDogRunning", false);
+        }
+        else if(!moveInput && bc.size == new Vector2((float)0.3500786, (float)0.6035978))
+        {
+            anim.SetBool("isRunning", false);
+        }
+        if (moveInput && bc.size == new Vector2((float)0.6187489, (float)0.6479998))
+        {
+            anim.SetBool("isRunning", false);
+            anim.SetBool("isDogRunning", true);
+        }
+        else if (!moveInput && bc.size == new Vector2((float)0.6187489, (float)0.6479998))
+        {
+            anim.SetBool("isRunning", false);
+            anim.SetBool("isDogRunning", false);
+        }
     }
     private void Update()
-    {   
-        //man idle
-        if (isGrounded && bc.size == new Vector2((float)0.3500786, (float)0.6035978))
+    {
+        isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
+        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
-            State = States.idle;
+            jump();
         }
-        //dog idle
-        if (isGrounded && bc.size == new Vector2((float)0.6187489, (float)0.6479998))
+
+        if (Input.GetButton("Horizontal"))
         {
-            State = States.dog_idle;
-        }
-        //rat idle
-        if (isGrounded && bc.size == new Vector2((float)0.5015686, (float)0.1840866))
-        {
-            State = States.rat_idle ;
-        }
-        //man run
-        if (Input.GetButton("Horizontal") && bc.size == new Vector2((float)0.3500786, (float)0.6035978))
-        {
-            State = States.run;
+            //State = States.run;
             Run();
         }
-        //dog run
-        if (Input.GetButton("Horizontal") && bc.size == new Vector2((float)0.6187489, (float)0.6479998))
-        {
-            State = States.dog_run;
-            Run();
-        }
-        if (Input.GetButton("Horizontal") && bc.size == new Vector2((float)0.5015686, (float)0.1840866))
-        {
-            State = States.rat_run;
-            Run();
-        }
-        if (isGrounded && Input.GetButtonDown("Jump"))
-        {
-            Jump();
-        }
+ 
         if (Input.GetKey(KeyCode.F1))
         {
             if(bc.size != new Vector2((float)0.6187489, (float)0.6479998))
             {
                 bc.size = new Vector2((float)0.6187489, (float)0.6479998);
-                bc.offset = new Vector2((float)0.1, (float)(0.6479998 / 2));
-                State = States.animtodog;
                 ChangeSprite(dog);
+                anim.SetBool("isDog", true);
                 speed = 6f;
                 jumpForce = 12f;
             }
@@ -100,52 +89,12 @@ public class hero : MonoBehaviour
             if(bc.size != new Vector2((float)0.3500786, (float)0.6035978))
             {
                 bc.size = new Vector2((float)0.3500786, (float)0.6035978);
-                bc.offset = new Vector2((float)-0.1309199, (float)0.8081097);
-                State = States.animtodog;
+                anim.SetBool("isDog", false);
                 ChangeSprite(oldSprite);
                 speed = 3f;
                 jumpForce = 8f;
             }
         }
-        if (Input.GetKey(KeyCode.F3))
-        {
-            if(bc.size != new Vector2((float)0.5015686, (float)0.1840866))
-            {
-                bc.size = new Vector2((float)0.5015686, (float)0.1840866);
-                bc.offset = new Vector2((float)-0.05141503, (float)0.1840866 * (float)1.44);
-                State = States.animtodog;
-                ChangeSprite(rat);
-                speed = 3f;
-                jumpForce = 4f;
-            }
-        }
-        if(timeBtwAttack >= 0)
-        {
-            if (Input.GetMouseButton(0) && bc.size == new Vector2((float)0.3500786, (float)0.6035978))
-            {
-                State = States.atack;
-               //aCollider2D[] enemies = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemy);
-//                for (int i = 0; i < enemies.Length; i++)
-  //              {
-    //                enemies[].GetComponent<Enemy>.TakeDamage(damage);
-      //          }
-            }
-            if (Input.GetMouseButton(0) && bc.size == new Vector2((float)0.6187489, (float)0.6479998))
-            {
-                State = States.dogattack;
-                //aCollider2D[] enemies = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemy);
-                //                for (int i = 0; i < enemies.Length; i++)
-                //              {
-                //                enemies[].GetComponent<Enemy>.TakeDamage(damage);
-                //          }
-            }
-            timeBtwAttack = startTimeBtwAttack;
-        }
-        else
-        {
-            timeBtwAttack -= Time.deltaTime;
-        }
-
     }
     private void Run()
     {
@@ -156,35 +105,13 @@ public class hero : MonoBehaviour
 
         spriteRenderer.flipX = dir.x < 0.0f;
     }
-    private void Jump()
+    void jump()
     {
-        rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
-
-    }
-    private void CheckGround()
-    {
-        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 0.3f);
-        isGrounded = collider.Length > 1;
+        rb.velocity = Vector2.up * jumpForce;
     }
     void ChangeSprite(Sprite sprite)
     {
         spriteRenderer.sprite = sprite;
     }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPos.position, attackRange);
-    }
-}
-public enum States
-{
-    idle,
-    run,
-    animtodog,
-    dog_idle,
-    dog_run,
-    rat_idle,
-    rat_run,
-    atack,
-    dogattack
+
 }
