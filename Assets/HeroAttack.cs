@@ -25,20 +25,20 @@ public class HeroAttack : MonoBehaviour
             if (Input.GetMouseButton(0) && bc.size == new Vector2((float)0.3500786, (float)0.6035978))
             {
                 anim.SetTrigger("manattack");
-                /*Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemy);
+                Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemy);
                 for(int i = 0; i < enemies.Length; i++)
                 {
                     enemies[i].GetComponent<Enemy>().TakeDamage(damage);
-                }*/
+                }
             }
             if (Input.GetMouseButton(0) && bc.size == new Vector2((float)0.6187489, (float)0.6479998))
             {
                 anim.SetTrigger("dogattack");
-                /*Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemy);
+                Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemy);
                 for(int i = 0; i < enemies.Length; i++)
                 {
                     enemies[i].GetComponent<Enemy>().TakeDamage(damage);
-                }*/
+                }
             }
             timeBtwAttack = startTimeAttack;
         }
