@@ -10,7 +10,7 @@ public class hero : MonoBehaviour
 
 
     private bool moveInput;
-
+    private bool facingRight = true;
 
 
     private bool isGrounded;
@@ -24,6 +24,7 @@ public class hero : MonoBehaviour
     public BoxCollider2D bc;
     public Sprite dog;
     public Sprite oldSprite;
+    private float chek;
 
     private void Start()
     {
@@ -39,6 +40,10 @@ public class hero : MonoBehaviour
     private void FixedUpdate()
     {
         moveInput = Input.GetButton("Horizontal");
+  /*      if (facingRight == false && moveInput > 0)
+        {
+            Flip();
+        }*/
         if (moveInput && bc.size == new Vector2((float)0.3500786, (float)0.6035978))
         {
             anim.SetBool("isRunning", true);
@@ -100,14 +105,36 @@ public class hero : MonoBehaviour
     {
 
         Vector3 dir = transform.right * Input.GetAxis("Horizontal");
+        chek = Input.GetAxis("Horizontal");
 
         transform.position = Vector3.MoveTowards(transform.position, transform.position + dir, speed * Time.deltaTime);
 
-        spriteRenderer.flipX = dir.x < 0.0f;
+        //spriteRenderer.flipX = dir.x < 0.0f;
+        if(chek > 0 && facingRight == false)
+        {
+            facingRight = !facingRight;
+            Vector3 Scaler = transform.localScale;
+            Scaler.x *= -1;
+            transform.localScale = Scaler;
+        }
+        else if(chek < 0 && facingRight == true)
+        {
+            facingRight = !facingRight;
+            Vector3 Scaler = transform.localScale;
+            Scaler.x *= -1;
+            transform.localScale = Scaler;
+        }
     }
     void jump()
     {
         rb.velocity = Vector2.up * jumpForce;
+    }
+    void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 Scaler = transform.localScale;
+        Scaler.x *= -1;
+        transform.localScale = Scaler;
     }
     void ChangeSprite(Sprite sprite)
     {
