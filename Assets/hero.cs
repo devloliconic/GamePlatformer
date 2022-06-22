@@ -5,7 +5,7 @@ using UnityEngine;
 public class hero : MonoBehaviour
 {
     [SerializeField] private float speed = 3f;
-    [SerializeField] private int lives = 5;
+    [SerializeField] public int lives = 5;
     [SerializeField] private float jumpForce = 8f;
 
 
@@ -100,6 +100,10 @@ public class hero : MonoBehaviour
                 jumpForce = 8f;
             }
         }
+        if(lives <= 0)
+        {
+            dead();
+        }
     }
     private void Run()
     {
@@ -139,6 +143,10 @@ public class hero : MonoBehaviour
     void ChangeSprite(Sprite sprite)
     {
         spriteRenderer.sprite = sprite;
+    }
+    void dead()
+    {
+        Destroy(gameObject);
     }
 
 }

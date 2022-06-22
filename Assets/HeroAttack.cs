@@ -13,6 +13,7 @@ public class HeroAttack : MonoBehaviour
     public int damage;
     public Animator anim;
     public BoxCollider2D bc;
+    
     private void Start()
     {
         anim = GetComponent<Animator>();
