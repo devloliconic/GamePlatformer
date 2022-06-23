@@ -46,8 +46,8 @@ public class Enemy : MonoBehaviour
         }
         else if(distToPlayer > agroDistance)
         {
-            anim.SetBool("isrun", false);
             StopHunting();
+            anim.SetBool("isrun", false);
         }
         //anim.SetBool("isrun", false);
         if(health <= 0)
