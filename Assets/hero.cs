@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class hero : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class hero : MonoBehaviour
     [SerializeField] public int lives = 5;
     [SerializeField] private float jumpForce = 8f;
 
-
+    private string lname;
     private bool moveInput;
     private bool facingRight = true;
 
@@ -66,6 +67,7 @@ public class hero : MonoBehaviour
     }
     private void Update()
     {
+        lname = SceneManager.GetActiveScene().name;
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
         if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
@@ -146,7 +148,7 @@ public class hero : MonoBehaviour
     }
     void dead()
     {
-        Destroy(gameObject);
+        SceneManager.LoadScene(lname);
     }
 
 }
