@@ -107,9 +107,9 @@ public class hero : MonoBehaviour
     }
     void jump()
     {
-
+<<<<<<< Updated upstream
         rb.velocity = Vector2.up * jumpForce;
-
+=======
         rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
 
     }
@@ -117,7 +117,7 @@ public class hero : MonoBehaviour
     {
         Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 0.3f);
         isGrounded = collider.Length >= 1;
-
+>>>>>>> Stashed changes
     }
     void ChangeSprite(Sprite sprite)
     {
