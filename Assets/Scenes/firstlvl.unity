@@ -6672,7 +6672,6 @@ GameObject:
   - component: {fileID: 798310130}
   - component: {fileID: 798310129}
   - component: {fileID: 798310131}
-  - component: {fileID: 798310132}
   m_Layer: 0
   m_Name: 3
   m_TagString: Untagged
@@ -6726,7 +6725,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 100, y: 3.1651552}
+  m_Size: {x: 1009, y: 3.1651552}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6740,7 +6739,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798310128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17, y: 0.47, z: 0}
+  m_LocalPosition: {x: 0.17, y: 0.22, z: 0}
   m_LocalScale: {x: 1.0829, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6756,25 +6755,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 798310128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef450cbe9e3e51f4a9ef667c610c547c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &798310132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 798310128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09c9a2b6db417f147b5441074a6304e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   followingTarget: {fileID: 0}
-  parallaxStrength: 0.698
+  parallaxStrength: 0.605
   disableVerticalParallax: 0
-  targetPreviousPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &801328871
 GameObject:
   m_ObjectHideFlags: 0
@@ -7870,7 +7856,6 @@ GameObject:
   - component: {fileID: 924425782}
   - component: {fileID: 924425781}
   - component: {fileID: 924425783}
-  - component: {fileID: 924425784}
   m_Layer: 0
   m_Name: 5
   m_TagString: Untagged
@@ -7924,7 +7909,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 100, y: 3.24}
+  m_Size: {x: 1009, y: 3.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -7938,7 +7923,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 924425780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.29, z: 0}
+  m_LocalPosition: {x: 0, y: -0.62, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7954,25 +7939,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 924425780}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef450cbe9e3e51f4a9ef667c610c547c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &924425784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 924425780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09c9a2b6db417f147b5441074a6304e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   followingTarget: {fileID: 0}
-  parallaxStrength: 0.1
+  parallaxStrength: 0.24
   disableVerticalParallax: 0
-  targetPreviousPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &933635439
 GameObject:
   m_ObjectHideFlags: 0
@@ -15098,7 +15070,6 @@ GameObject:
   - component: {fileID: 1794736754}
   - component: {fileID: 1794736753}
   - component: {fileID: 1794736755}
-  - component: {fileID: 1794736756}
   m_Layer: 0
   m_Name: 2
   m_TagString: Untagged
@@ -15152,7 +15123,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 100, y: 3.080104}
+  m_Size: {x: 1000, y: 3.080104}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -15166,7 +15137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794736752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.48, z: 0}
+  m_LocalPosition: {x: 0, y: 0.51, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15182,25 +15153,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1794736752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef450cbe9e3e51f4a9ef667c610c547c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1794736756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794736752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09c9a2b6db417f147b5441074a6304e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   followingTarget: {fileID: 0}
-  parallaxStrength: 0.913
+  parallaxStrength: 0.904
   disableVerticalParallax: 0
-  targetPreviousPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1804468883
 GameObject:
   m_ObjectHideFlags: 0
