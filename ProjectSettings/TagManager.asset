@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - deadb
   - heart
+  - nextLevel
   layers:
   - Default
   - TransparentFX
